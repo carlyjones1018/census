@@ -2,13 +2,25 @@
 title: "census"
 ---
 
-## Population Under 18 in Sarasota County
+## Age Groups Across Sarasota County
 
-The map below shows the estimated share of residents under age 18 in each
+Each panel maps the estimated share of residents in an age group for each
 Sarasota County census tract, based on the 2024 American Community Survey
 5-year estimates.
 
-![Share of residents under 18 by Sarasota County census tract.](sarasota_under_18_map.png)
+![Share of residents in four age groups by Sarasota County census tract.](sarasota_age_groups_map.png)
+
+The Census groups ages 50–54 together. For this map, one-fifth of that group is
+estimated as age 50 and the remaining four-fifths as ages 51–54.
 
 Source: U.S. Census Bureau American Community Survey, via Census Reporter;
 tract boundaries from TIGER/Line.
+
+## Florida's Under-18 Population Over Time
+
+This line graph shows the estimated statewide share of Florida residents under
+age 18 from 2020 through 2024.
+
+![Florida's under-18 population share over time.](florida_under_18_trend.png)
+
+Source: U.S. Census Bureau, Vintage 2024 Population Estimates.
