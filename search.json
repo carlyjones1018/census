@@ -4,7 +4,14 @@
     "href": "index.html",
     "title": "census",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "The map below shows the estimated share of residents under age 18 in each Sarasota County census tract, based on the 2024 American Community Survey 5-year estimates.\n\n\n\nShare of residents under 18 by Sarasota County census tract.\n\n\nSource: U.S. Census Bureau American Community Survey, via Census Reporter; tract boundaries from TIGER/Line."
+  },
+  {
+    "objectID": "index.html#population-under-18-in-sarasota-county",
+    "href": "index.html#population-under-18-in-sarasota-county",
+    "title": "census",
+    "section": "",
+    "text": "The map below shows the estimated share of residents under age 18 in each Sarasota County census tract, based on the 2024 American Community Survey 5-year estimates.\n\n\n\nShare of residents under 18 by Sarasota County census tract.\n\n\nSource: U.S. Census Bureau American Community Survey, via Census Reporter; tract boundaries from TIGER/Line."
   },
   {
     "objectID": "about.html",
