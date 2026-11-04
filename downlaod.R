@@ -1,28 +1,60 @@
-library(tidycensus)
 library(dplyr)
 library(ggplot2)
 
-age_data <- get_acs(
-  geography = "county",
+table_id <- "B01001"
+county_geoid <- "05000US12115"
+under_18_variables <- paste0(
+  "B01001", sprintf("%03d", c(3:6, 27:30))
+)
+table_variables <- paste0("B01001", sprintf("%03d", 1:49))
+
+tracts <- tigris::tracts(
   state = "FL",
   county = "Sarasota",
-  table = "B01001",
   year = 2024,
-  survey = "acs5"
+  cb = TRUE,
+  class = "sf"
 )
 
+geography_ids <- c(county_geoid, paste0("14000US", tracts$GEOID))
+geography_batches <- split(
+  geography_ids,
+  ceiling(seq_along(geography_ids) / 20)
+)
+acs_data <- lapply(geography_batches, \(batch) {
+  data_url <- paste0(
+    "https://api.censusreporter.org/1.0/data/show/acs2024_5yr",
+    "?table_ids=", table_id,
+    "&geo_ids=", paste(batch, collapse = ",")
+  )
+  jsonlite::fromJSON(data_url, simplifyVector = FALSE)$data
+}) |>
+  Reduce(f = c)
+
+get_estimate <- \(geography, variable) {
+  value <- acs_data[[geography]][[table_id]]$estimate[[variable]]
+  if (is.null(value)) NA_real_ else as.numeric(value)
+}
+
+county_estimates <- vapply(
+  table_variables,
+  \(variable) get_estimate(county_geoid, variable),
+  numeric(1)
+)
+if (anyNA(county_estimates)) {
+  stop("The ACS response is missing one or more county age estimates.")
+}
+
+age_data <- data.frame(
+  GEOID = "12115",
+  NAME = "Sarasota County, Florida",
+  variable = paste0("B01001_", sprintf("%03d", 1:49)),
+  estimate = county_estimates
+)
 write.csv(age_data, "sarasota_age_data.csv", row.names = FALSE)
 
-under_18_variables <- c(
-  "B01001_003", "B01001_004", "B01001_005", "B01001_006",
-  "B01001_027", "B01001_028", "B01001_029", "B01001_030"
-)
-
-under_18_count <- sum(
-  age_data$estimate[age_data$variable %in% under_18_variables]
-)
-total_population <- age_data$estimate[age_data$variable == "B01001_001"]
-
+under_18_count <- sum(county_estimates[under_18_variables])
+total_population <- county_estimates["B01001001"]
 under_18_summary <- data.frame(
   county = "Sarasota County, Florida",
   year = 2024,
@@ -30,32 +62,29 @@ under_18_summary <- data.frame(
   total_population = total_population,
   percent_under_18 = under_18_count / total_population * 100
 )
-
 write.csv(under_18_summary, "sarasota_under_18_summary.csv", row.names = FALSE)
 
-tract_age_data <- get_acs(
-  geography = "tract",
-  state = "FL",
-  county = "Sarasota",
-  table = "B01001",
-  year = 2024,
-  survey = "acs5",
-  geometry = TRUE
-)
+tract_population <- bind_rows(lapply(seq_len(nrow(tracts)), \(i) {
+  geography <- paste0("14000US", tracts$GEOID[i])
+  estimates <- vapply(
+    table_variables,
+    \(variable) get_estimate(geography, variable),
+    numeric(1)
+  )
+  if (anyNA(estimates)) {
+    stop("The ACS response is missing age estimates for tract ", tracts$GEOID[i], ".")
+  }
 
-tract_population <- tract_age_data |>
-  sf::st_drop_geometry() |>
-  group_by(GEOID, NAME) |>
-  summarise(
-    under_18_population = sum(estimate[variable %in% under_18_variables]),
-    total_population = estimate[variable == "B01001_001"][1],
-    .groups = "drop"
-  ) |>
+  data.frame(
+    GEOID = tracts$GEOID[i],
+    NAME = tracts$NAME[i],
+    under_18_population = sum(estimates[under_18_variables]),
+    total_population = estimates["B01001001"]
+  )
+})) |>
   mutate(percent_under_18 = 100 * under_18_population / total_population)
 
-tract_map <- tract_age_data |>
-  filter(variable == "B01001_001") |>
-  select(GEOID, NAME, geometry) |>
+tract_map <- tracts |>
   left_join(tract_population, by = c("GEOID", "NAME"))
 
 write.csv(
@@ -73,7 +102,7 @@ under_18_map <- ggplot(tract_map) +
   labs(
     title = "Population Under 18 in Sarasota County",
     subtitle = "Share of residents under age 18 by census tract | 2024 ACS 5-year estimates",
-    caption = "Source: U.S. Census Bureau, American Community Survey"
+    caption = "Source: U.S. Census Bureau ACS, via Census Reporter; tract boundaries: TIGER/Line"
   ) +
   theme_minimal() +
   theme(

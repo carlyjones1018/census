@@ -114,8 +114,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#population-under-18-in-sarasota-county" id="toc-population-under-18-in-sarasota-county" class="nav-link active" data-scroll-target="#population-under-18-in-sarasota-county">Population Under 18 in Sarasota County</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -139,10 +145,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="population-under-18-in-sarasota-county" class="level2">
+<h2 class="anchored" data-anchor-id="population-under-18-in-sarasota-county">Population Under 18 in Sarasota County</h2>
+<p>The map below shows the estimated share of residents under age 18 in each Sarasota County census tract, based on the 2024 American Community Survey 5-year estimates.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="sarasota_under_18_map.png" class="img-fluid figure-img"></p>
+<figcaption>Share of residents under 18 by Sarasota County census tract.</figcaption>
+</figure>
+</div>
+<p>Source: U.S. Census Bureau American Community Survey, via Census Reporter; tract boundaries from TIGER/Line.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -218,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/carlyjones1018\.github\.io\/census\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

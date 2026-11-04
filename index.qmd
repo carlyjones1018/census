@@ -2,6 +2,13 @@
 title: "census"
 ---
 
-This is a Quarto website.
+## Population Under 18 in Sarasota County
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+The map below shows the estimated share of residents under age 18 in each
+Sarasota County census tract, based on the 2024 American Community Survey
+5-year estimates.
+
+![Share of residents under 18 by Sarasota County census tract.](sarasota_under_18_map.png)
+
+Source: U.S. Census Bureau American Community Survey, via Census Reporter;
+tract boundaries from TIGER/Line.
