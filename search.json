@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "census",
     "section": "",
-    "text": "Use the selector on the map to choose an age group. Click a census tract to see its estimated share of residents in that group, based on the 2024 American Community Survey 5-year estimates.\n\n\nWarning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).\nNeed '+proj=longlat +datum=WGS84'\nWarning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).\nNeed '+proj=longlat +datum=WGS84'\nWarning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).\nNeed '+proj=longlat +datum=WGS84'\nWarning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).\nNeed '+proj=longlat +datum=WGS84'\n\n\n\n\n\n\nThe Census groups ages 50–54 together. For this map, one-fifth of that group is estimated as age 50 and the remaining four-fifths as ages 51–54.\nSource: U.S. Census Bureau American Community Survey, via Census Reporter; tract boundaries from TIGER/Line."
+    "text": "Use the selector on the map to choose an age group. Click a census tract to see its estimated share of residents in that group, based on the 2024 American Community Survey 5-year estimates.\n\n\n\n\n\n\nThe Census groups ages 50–54 together. For this map, one-fifth of that group is estimated as age 50 and the remaining four-fifths as ages 51–54.\nSource: U.S. Census Bureau American Community Survey, via Census Reporter; tract boundaries from TIGER/Line."
   },
   {
     "objectID": "index.html#age-groups-across-sarasota-county",
     "href": "index.html#age-groups-across-sarasota-county",
     "title": "census",
     "section": "",
-    "text": "Use the selector on the map to choose an age group. Click a census tract to see its estimated share of residents in that group, based on the 2024 American Community Survey 5-year estimates.\n\n\nWarning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).\nNeed '+proj=longlat +datum=WGS84'\nWarning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).\nNeed '+proj=longlat +datum=WGS84'\nWarning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).\nNeed '+proj=longlat +datum=WGS84'\nWarning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).\nNeed '+proj=longlat +datum=WGS84'\n\n\n\n\n\n\nThe Census groups ages 50–54 together. For this map, one-fifth of that group is estimated as age 50 and the remaining four-fifths as ages 51–54.\nSource: U.S. Census Bureau American Community Survey, via Census Reporter; tract boundaries from TIGER/Line."
+    "text": "Use the selector on the map to choose an age group. Click a census tract to see its estimated share of residents in that group, based on the 2024 American Community Survey 5-year estimates.\n\n\n\n\n\n\nThe Census groups ages 50–54 together. For this map, one-fifth of that group is estimated as age 50 and the remaining four-fifths as ages 51–54.\nSource: U.S. Census Bureau American Community Survey, via Census Reporter; tract boundaries from TIGER/Line."
   },
   {
     "objectID": "index.html#floridas-under-18-population-over-time",
